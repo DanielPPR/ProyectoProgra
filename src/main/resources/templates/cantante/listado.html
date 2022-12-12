@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+       <title>Style Music</title>
+        <meta charset="UTF-8">
+        <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>
+    </head>
+
+    <body>
+        <aside th:replace="layout/plantilla :: aside" />
+       
+        <div class="contenido">            
+            <h2>Listado de Cantantes</h2>            
+            <a th:href="@{/cantante/nuevo}">Nuevo Cantante</a>      
+            <div th:if="${cantante != null and !cantante.empty}">            
+                <table border="1">                  
+                    <thead>                       
+                        <tr>                         
+                            <th>Nombre</th>                 
+                            <th>Modificar</th>                    
+                            <th>Eliminar</th>                  
+                        </tr>                  
+                    </thead>         
+                    <tbody>                 
+
+                        <tr th:each="item : ${cantantes}">          
+                            <td th:text="${item.NombreCantante}"></td>     
+                            <td><a th:href="@{/cantante/modificar/} + ${item.IdCantante}">Modificar</a></td>                          
+                            <td><a th:href="@{/cantante/eliminar/} + ${item.IdCantante}">Eliminar</a></td>          
+                        </tr>              
+
+                    </tbody>        
+                </table>         
+            </div>           
+            <div th:if="${cantantes == null or cantantes.empty}"> 
+                La lista de artistas está vacía
+            </div>    
+        </div>  
+        
+    </body>
+    <footer th:replace="layout/plantilla :: footer" />
+</html>

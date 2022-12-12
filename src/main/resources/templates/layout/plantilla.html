@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html>
+    <head>
+        <title>Style Music</title>
+        <meta charset="UTF-8">
+        <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div>
+            <aside th:fragment="aside" class="barralateral">
+            <nav class="menu">
+                <ul>
+                    <li style="--clr:#00ade1">
+                        <a href="Index.html" data-text="&nbsp;Inicio">&nbsp;Inicio&nbsp;</a>
+                    </li>
+                    <li style="--clr:#ff6493">
+                        <a href="Perfil.html" data-text="&nbsp;Perfil">&nbsp;Perfil&nbsp;</a>
+                    </li>
+                    <li style="--clr:#ffdd1c">
+                        <a href="Playlist.html" data-text="&nbsp;Playlist">&nbsp;Playlist&nbsp;</a>
+                    </li>
+                    <li style="--clr:#00dc82">
+                        <a href="Biblioteca.html" data-text="&nbsp;Biblioteca">&nbsp;Biblioteca&nbsp;</a>
+                    </li>
+                    <li style="--clr:#dc00d4">
+                        <a href="Generos.html" data-text="&nbsp;Generos">&nbsp;Generos&nbsp;</a>
+                    </li>
+                    <li style="--clr:#07FFD9">
+                        <a href="/cantante/listado" data-text="&nbsp;Artistas">&nbsp;Artistas&nbsp;</a>
+                    </li>
+                    <li style="--clr:#4040FF">
+                        <a href="Videos.html" data-text="&nbsp;Videos">&nbsp;Videos&nbsp;</a>
+                    </li>
+                    <li style="--clr:#FF32E3">
+                        <a href="Configuracion.html" data-text="&nbsp;Configuracion">&nbsp;Configuracion&nbsp;</a>
+                    </li>
+
+                </ul>
+
+            </nav>
+        </aside>
+        </div>
+        
+        <div th:fragment="div" class="contenido">
+
+        <h1></h1>
+
+      
+    </div>
+    <footer th:fragment="footer" class="footer">
+        <p>&COPY; Derechos reservados 2022 Style Music</p>
+    </footer>
+        
+    </body>
+</html>

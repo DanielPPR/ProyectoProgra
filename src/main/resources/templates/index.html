@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+       <title>Style Music</title>
+        <meta charset="UTF-8">
+        <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>
+    </head>
+
+    <body>
+        <aside th:replace="layout/plantilla :: aside" />
+        <div class="contenido">
+            
+            <h1>INICIO</h1>
+            <h2>Bienvenidos a <strong>STYLE MUSIC</strong></h2> 
+            
+        </div>
+    </body>
+    <footer th:replace="layout/plantilla :: footer" />
+</html>
