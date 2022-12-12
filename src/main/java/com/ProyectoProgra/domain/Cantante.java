@@ -26,15 +26,15 @@ public class Cantante implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="Id_Cantante")
-    private Long IdCantante;
-    private String NombreCantante;
-
+    @Column(name="id_cantante")
+    private Long idCantante;
+    private String nombrecantante;
+    
     public Cantante() {
     }
     
-    public Cantante(String NombreCantante) {
-        this.NombreCantante = NombreCantante;
+    public Cantante(String nombrecantante) {
+        this.nombrecantante = nombrecantante;
     }
     
 }

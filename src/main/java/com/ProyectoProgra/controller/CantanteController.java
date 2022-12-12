@@ -29,27 +29,32 @@ public class CantanteController {
         model.addAttribute("cantantes", cantantes);
         return "/cantante/listado";
     }
-    
-        @GetMapping("/cantante/nuevo")/*Esto reponde al Index*/
+
+        @GetMapping("/cantante/nuevo")
     public String nuevoCantante(Cantante cantante) {
         return "/cantante/modificar";
     }
 
-    @PostMapping /*Reponde a esta ruta*/("/guardarCantante")
+    @PostMapping("/cantante/guardar")
+    public String guardarCantante2 (Cantante cantante){
+    cantanteService.save(cantante);
+    return "/cantante/modificar";
+    }
+    @PostMapping("/guardarCantante")
     public String guardarCantante(Cantante cantante) {
         cantanteService.save(cantante);
         return "redirect:/cantante/listado";/*Redirecciona a un recurso, no devuelve una vista, devuelve una accion que hace la magia*/
-
     }
-    
-@GetMapping("/modificarCantante/{IdCantante}")
-public String modificarCliente(Cantante cantante, Model model){
+
+@GetMapping("/modificarCantante/{idCantante}")
+public String modificarCantante(Cantante cantante, Model model){
 cantante = cantanteService.getCantante(cantante);
 model.addAttribute("cantante", cantante);
 return "redirect:/cantante/listado";
 }
-@GetMapping("/eliminarCliente/{IdCantante}")
-public String eliminarCliente(Cantante cantante){
+
+@GetMapping("/eliminarCantante/{idCantante}")
+public String eliminarCantante(Cantante cantante){
 cantanteService.delete(cantante);
 return "redirect:/cantante/listado";
 }

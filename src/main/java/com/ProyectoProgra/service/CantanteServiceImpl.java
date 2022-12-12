@@ -11,10 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author Daniel
- */
 @Service
 public class CantanteServiceImpl implements CantanteService{
     
@@ -22,20 +18,21 @@ public class CantanteServiceImpl implements CantanteService{
     private CantanteDao cantanteDao;
     
     @Override
-    @Transactional(readOnly = true)
+    @Transactional//(readOnly = true)
     public List<Cantante> getCantantes() {
     return (List<Cantante>) cantanteDao.findAll();
     }
     
     @Override
-    @Transactional(readOnly = true)
+    @Transactional//(readOnly = true)
     public Cantante getCantante(Cantante cantante) {
         return cantanteDao.findById(cantante.getIdCantante()).orElse(null);
     }
-    
+
    @Override
+   @Transactional
     public void save(Cantante cantante) {
-cantanteDao.save(cantante);
+    cantanteDao.save(cantante);
     }
 
     @Override

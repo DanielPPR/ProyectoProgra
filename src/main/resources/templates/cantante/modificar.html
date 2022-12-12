@@ -17,14 +17,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <a th:href="@{/cantante/listado}">Regresar</a>
             <br>
             <br>
-            <form th:action="@{/cantante/guardar}"
+            <form th:action="@{/modificarCantante}"
                   method="POST"
                   th:object="${cantante}">
-                <input type="hidden" name="IdCantante" th:field="*(IdCantante)" /> 
-                <label for="NombreCantante">Nombre: </label>
-                <input type="text" name="NombreCantante" th:field="*{NombreCantante}" />
+              <input type="hidden" name="idCantante" th:field="*(idCantante)"/>
+                <label for="nombrecantante">Nombre: </label>
+                <input type="text" name="nombrecantante" th:field="*{nombrecantante}" />
                 <br>
-               
                 <input type="submit" name="Guardar" value="Guardar" />
             </form>
         </div>

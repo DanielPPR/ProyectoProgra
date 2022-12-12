@@ -16,7 +16,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <div class="contenido">            
             <h2>Listado de Cantantes</h2>            
             <a th:href="@{/cantante/nuevo}">Nuevo Cantante</a>      
-            <div th:if="${cantante != null and !cantante.empty}">            
+            <div th:if="${cantantes != null and !cantantes.empty}">            
                 <table border="1">                  
                     <thead>                       
                         <tr>                         
@@ -26,16 +26,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         </tr>                  
                     </thead>         
                     <tbody>                 
-
                         <tr th:each="item : ${cantantes}">          
-                            <td th:text="${item.NombreCantante}"></td>     
-                            <td><a th:href="@{/cantante/modificar/} + ${item.IdCantante}">Modificar</a></td>                          
-                            <td><a th:href="@{/cantante/eliminar/} + ${item.IdCantante}">Eliminar</a></td>          
-                        </tr>              
-
+                            <td th:text="${item.nombrecantante}"></td>     
+                            <td><a th:href="@{/cantante/nuevo} + ${item.idCantante}">Modificar</a></td>                          
+                            <td><a th:href="@{/eliminarCantante/} + ${item.idCantante}">Eliminar</a></td>          
+                        </tr>             
                     </tbody>        
                 </table>         
-            </div>           
+            </div>
             <div th:if="${cantantes == null or cantantes.empty}"> 
                 La lista de artistas está vacía
             </div>    
