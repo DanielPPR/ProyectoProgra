@@ -28,9 +28,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <tbody>                 
                         <tr th:each="item : ${cantantes}">          
                             <td th:text="${item.nombrecantante}"></td>     
-                            <td><a th:href="@{/cantante/nuevo} + ${item.idCantante}">Modificar</a></td>                          
+                            <td><a th:href="@{/modificarCantante/} + ${item.idCantante}">Modificar</a></td>                          
                             <td><a th:href="@{/eliminarCantante/} + ${item.idCantante}">Eliminar</a></td>          
-                        </tr>             
+                        </tr>            
                     </tbody>        
                 </table>         
             </div>

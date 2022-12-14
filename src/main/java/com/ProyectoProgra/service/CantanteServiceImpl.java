@@ -18,13 +18,13 @@ public class CantanteServiceImpl implements CantanteService{
     private CantanteDao cantanteDao;
     
     @Override
-    @Transactional//(readOnly = true)
+    @Transactional(readOnly = true)
     public List<Cantante> getCantantes() {
     return (List<Cantante>) cantanteDao.findAll();
     }
     
     @Override
-    @Transactional//(readOnly = true)
+    @Transactional(readOnly = true)
     public Cantante getCantante(Cantante cantante) {
         return cantanteDao.findById(cantante.getIdCantante()).orElse(null);
     }

@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
+
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Style Music</title>
         <meta charset="UTF-8">
         <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>
     </head>
-
     <body>
         <aside th:replace="layout/plantilla :: aside" />
         <div class="contenido">
@@ -17,10 +13,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <a th:href="@{/cantante/listado}">Regresar</a>
             <br>
             <br>
-            <form th:action="@{/modificarCantante}"
+            <form th:action="@{/cantante/guardar}"
                   method="POST"
                   th:object="${cantante}">
-              <input type="hidden" name="idCantante" th:field="*(idCantante)"/>
+              <input type="hidden" name="idCantante" th:field="*{idCantante}"/>
                 <label for="nombrecantante">Nombre: </label>
                 <input type="text" name="nombrecantante" th:field="*{nombrecantante}" />
                 <br>
