@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
        <title>Style Music</title>
@@ -14,22 +10,39 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <aside th:replace="layout/plantilla :: aside" />
        
         <div class="contenido">            
-            <h2>Listado de Cantantes</h2>            
-            <a th:href="@{/cantante/nuevo}">Nuevo Cantante</a>      
+            <h2>[[#{cantante.titulo}]]</h2>            
+            <a th:href="@{/cantante/nuevo}">
+                <button class="green">Nuevo Cantante</button>
+            </a>      
             <div th:if="${cantantes != null and !cantantes.empty}">            
-                <table border="1">                  
+                <table 
+                    class="table-primary"
+                    border="2">                  
                     <thead>                       
-                        <tr>                         
-                            <th>Nombre</th>                 
-                            <th>Modificar</th>                    
-                            <th>Eliminar</th>                  
+                        <tr class="table-primary">                         
+                            <th scope="col">[[#{cantante.nombre}]]</th>                 
+                            <th scope="col">[[#{accion.modificar}]]</th>                    
+                            <th scope="col">[[#{accion.eliminar}]]</th>                  
                         </tr>                  
                     </thead>         
                     <tbody>                 
                         <tr th:each="item : ${cantantes}">          
-                            <td th:text="${item.nombrecantante}"></td>     
-                            <td><a th:href="@{/modificarCantante/} + ${item.idCantante}">Modificar</a></td>                          
-                            <td><a th:href="@{/eliminarCantante/} + ${item.idCantante}">Eliminar</a></td>          
+                            <td th:text="${item.nombrecantante}"
+                                class="table-dark">
+                                    
+                            </td>     
+                            <td
+                                class="table-dark">
+                                <a th:href="@{/modificarCantante/} + ${item.idCantante}">
+                                    <button class="blue">[[#{accion.modificar}]]</button>
+                                </a>
+                            </td>                          
+                            <td
+                                class="table-dark">
+                                <a th:href="@{/eliminarCantante/} + ${item.idCantante}">
+                                    <button class="red">[[#{accion.eliminar}]]</button>
+                                </a>
+                            </td>          
                         </tr>            
                     </tbody>        
                 </table>         

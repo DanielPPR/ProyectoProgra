@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 
-<html xmlns:th="https://www.thymeleaf.org">
-<html>
-    <head>
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:fragment="head">
         <title>Style Music</title>
         <meta charset="UTF-8">
-        <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>
+            <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>
+            <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+            <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+            <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+            <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+            <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </head>
     <body>
         <div>
@@ -13,28 +18,28 @@
             <nav class="menu">
                 <ul>
                     <li style="--clr:#00ade1">
-                        <a href="Index.html" data-text="&nbsp;Inicio">&nbsp;Inicio&nbsp;</a>
+                        <a href="Index.html" data-text="&nbsp;Inicio">&nbsp;[[#{plantilla.inicio}]]&nbsp;</a>
                     </li>
                     <li style="--clr:#ff6493">
-                        <a href="Perfil.html" data-text="&nbsp;Perfil">&nbsp;Perfil&nbsp;</a>
+                        <a href="Perfil.html" data-text="&nbsp;Perfil">&nbsp;[[#{plantilla.perfil}]]&nbsp;</a>
                     </li>
                     <li style="--clr:#ffdd1c">
-                        <a href="Playlist.html" data-text="&nbsp;Playlist">&nbsp;Playlist&nbsp;</a>
+                        <a href="Playlist.html" data-text="&nbsp;Playlist">&nbsp;[[#{plantilla.playlist}]]&nbsp;</a>
                     </li>
                     <li style="--clr:#00dc82">
-                        <a href="Biblioteca.html" data-text="&nbsp;Biblioteca">&nbsp;Biblioteca&nbsp;</a>
+                        <a href="Biblioteca.html" data-text="&nbsp;Biblioteca">&nbsp;[[#{plantilla.biblioteca}]]&nbsp;</a>
                     </li>
                     <li style="--clr:#dc00d4">
-                        <a href="Generos.html" data-text="&nbsp;Generos">&nbsp;Generos&nbsp;</a>
+                        <a href="Generos.html" data-text="&nbsp;Generos">&nbsp;[[#{plantilla.genero}]]&nbsp;</a>
                     </li>
                     <li style="--clr:#07FFD9">
-                        <a href="/cantante/listado" data-text="&nbsp;Artistas">&nbsp;Artistas&nbsp;</a>
+                        <a href="/cantante/listado" data-text="&nbsp;Artistas">&nbsp;[[#{plantilla.cantante}]]&nbsp;</a>
                     </li>
                     <li style="--clr:#4040FF">
-                        <a href="Videos.html" data-text="&nbsp;Videos">&nbsp;Videos&nbsp;</a>
+                        <a href="Videos.html" data-text="&nbsp;Videos">&nbsp;[[#{plantilla.videos}]]&nbsp;</a>
                     </li>
                     <li style="--clr:#FF32E3">
-                        <a href="Configuracion.html" data-text="&nbsp;Configuracion">&nbsp;Configuracion&nbsp;</a>
+                        <a href="Configuracion.html" data-text="&nbsp;Configuracion">&nbsp;[[#{plantilla.config}]]&nbsp;</a>
                     </li>
 
                 </ul>
@@ -49,9 +54,13 @@
 
       
     </div>
-    <footer th:fragment="footer" class="footer">
-        <p>&COPY; Derechos reservados 2022 Style Music</p>
-    </footer>
+    <footer th:fragment="footer" >
+            <p class="footer">
+                &COPY [[#{plantilla.derechos}]]
+                <a th:href="@{/(lang=es)}">ES</a> | 
+                <a th:href="@{/(lang=en)}">EN</a>
+            </p>
+        </footer>
         
     </body>
 </html>
