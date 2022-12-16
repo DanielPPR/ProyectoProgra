@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-       <title>Style Music</title>
-        <meta charset="UTF-8">
-        <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>
+    <head th:replace="layout/plantilla :: head">
+ 
     </head>
 
     <body>
@@ -16,29 +14,25 @@
             </a>      
             <div th:if="${cantantes != null and !cantantes.empty}">            
                 <table 
-                    class="table-primary"
+                    class="table table-striped table-dark"
                     border="2">                  
                     <thead>                       
-                        <tr class="table-primary">                         
+                        <tr>                         
                             <th th:text="#{cantante.nombre}" scope="col">[[#{cantante.nombre}]]</th>                 
                             <th scope="col">[[#{accion.modificar}]]</th>                    
                             <th scope="col">[[#{accion.eliminar}]]</th>                  
                         </tr>                  
-                    </thead>         
-                    <tbody>                 
+                    </thead>        
+                    <tbody>               
                         <tr th:each="item : ${cantantes}">          
-                            <td th:text="${item.nombrecantante}"
-                                class="table-dark">
-                                    
+                            <td th:text="${item.nombrecantante}">    
                             </td>      
-                            <td
-                                class="table-dark">
+                            <td>
                                 <a th:href="@{/modificarCantante/} + ${item.idCantante}">
                                     <button class="blue">[[#{accion.modificar}]]</button>
                                 </a>
                             </td>                          
-                            <td
-                                class="table-dark">
+                            <td>
                                 <a th:href="@{/eliminarCantante/} + ${item.idCantante}">
                                     <button class="red">[[#{accion.eliminar}]]</button>
                                 </a>
