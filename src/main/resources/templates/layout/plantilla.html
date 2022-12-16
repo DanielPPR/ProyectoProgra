@@ -11,6 +11,7 @@
             <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
             <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
             <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+            
     </head>
     <body>
         <div>
@@ -18,7 +19,7 @@
             <nav class="menu">
                 <ul>
                     <li style="--clr:#00ade1">
-                        <a href="Index.html" data-text="&nbsp;Inicio">&nbsp;[[#{plantilla.inicio}]]&nbsp;</a>
+                        <a href="/"  data-text="&nbsp;Inicio">&nbsp;[[#{plantilla.inicio}]]&nbsp;</a>
                     </li>
                     <li style="--clr:#ff6493">
                         <a href="Perfil.html" data-text="&nbsp;Perfil">&nbsp;[[#{plantilla.perfil}]]&nbsp;</a>
@@ -30,7 +31,7 @@
                         <a href="Biblioteca.html" data-text="&nbsp;Biblioteca">&nbsp;[[#{plantilla.biblioteca}]]&nbsp;</a>
                     </li>
                     <li style="--clr:#dc00d4">
-                        <a href="Generos.html" data-text="&nbsp;Generos">&nbsp;[[#{plantilla.genero}]]&nbsp;</a>
+                        <a href="/genero/listado" data-text="&nbsp;Generos">&nbsp;[[#{plantilla.genero}]]&nbsp;</a>
                     </li>
                     <li style="--clr:#07FFD9">
                         <a href="/cantante/listado" data-text="&nbsp;Artistas">&nbsp;[[#{plantilla.cantante}]]&nbsp;</a>

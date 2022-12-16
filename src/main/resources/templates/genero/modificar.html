@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Style Music</title>
+        <meta charset="UTF-8">
+        <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <aside th:replace="layout/plantilla :: aside" />
+        <div class="contenido">
+            <h2>Datos del Genero</h2>
+            <a th:href="@{/genero/listado}">
+            <button class="yellow">[[#{accion.regresar}]]</button></a>
+            <br>
+            <br>
+            <form th:action="@{/genero/guardar}"
+                  method="POST"
+                  th:object="${genero}">
+              <input type="hidden" name="idGenero" th:field="*{idGenero}"/>
+                <label for="nombregenero">[[#{genero.nombre}]] </label>
+                <input type="text" name="nombregenero" th:field="*{nombregenero}" />
+                <br>
+                <button class="green">[[#{accion.guardar}]]</button>
+            </form>
+        </div>
+    </body>
+    <footer th:replace="layout/plantilla :: footer" />
+</html>
