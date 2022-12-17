@@ -28,7 +28,7 @@ public class Perfil implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_cliente")
     private Long idCliente;
-    private int idPlaylist;
+    private Long idPlaylist;
     private String nombre;
     private String apellido;
     private int celular;
@@ -39,7 +39,7 @@ public class Perfil implements Serializable {
     public Perfil() {
     }
 
-    public Perfil( int idPlaylist, String nombre, String apellido, int celular, int identificacion, String usercliente, String passwordcliente) {
+    public Perfil( Long idPlaylist, String nombre, String apellido, int celular, int identificacion, String usercliente, String passwordcliente) {
       
         this.idPlaylist = idPlaylist;
         this.nombre = nombre;
