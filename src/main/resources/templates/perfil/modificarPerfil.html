@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/plantilla :: head">
+        <title>Style Music</title>
+        <meta charset="UTF-8">
+        <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>
+    </head>
+    
+    <body>
+        <aside th:replace="layout/plantilla :: aside" />
+        <div class="contenido">
+            <h2>NOMBRE</h2>
+            <a th:href="@{/perfil/cliente}">
+            <button class="yellow">[[#{accion.regresar}]]</button></a>
+            <br>
+            <br>
+            <form th:action="@{/perfil/guardar}"
+                  method="POST"
+                  th:object="${perfil}">
+              <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
+                <label for="nombre">[[#{genero.nombre}]] </label>
+                <input type="text" name="nombre" th:field="*{nombre}" />
+                <br>
+                <button class="green">[[#{accion.guardar}]]</button>
+            </form>
+        </div>
+    </body>
+    <footer th:replace="layout/plantilla :: footer" />
+</html>

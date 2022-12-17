@@ -4,16 +4,39 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
 <html>
-    <head>
-        <title>Style Music</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+     <head th:replace="layout/plantilla :: head"></head>
     <body>
          <aside th:replace="layout/plantilla :: aside" />
        
         <div class="contenido">            
-        <div>TODO write content</div>
+        <div>
+            <h2>NOMBRE</h2>
+            <a th:href="@{/perfil/nuevo}">
+                <button class="green">Agregar nombre</button>
+            </a>     
+             <div th:if="${generos != null and !generos.empty}">            
+                <table 
+                    border="2">                  
+                    <thead>                       
+                        <tr>                         
+                            <th th:text="#{genero.nombre}" scope="col">[[#{cantante.nombre}]]</th>                 
+                            <th scope="col">[[#{accion.modificar}]]</th>                                    
+                        </tr>                  
+                    </thead>         
+                    <tbody>                 
+                        <tr th:each="item : ${perfiles}">          
+                            <td th:text="${item.nombre}">
+                            </td>      
+                            <td>
+                                <a th:href="@{/modificarPerfil/} + ${item.idCliente}">
+                                    <button class="blue">[[#{accion.modificar}]]</button>
+                                </a>
+                            </td>                          
+                        </tr>            
+                    </tbody>        
+                </table>         
+            </div>
+        </div>
         </div>
     </body>
      <footer th:replace="layout/plantilla :: footer" />
