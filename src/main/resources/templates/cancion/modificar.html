@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+       <title>Style Music</title>
+        <meta charset="UTF-8">
+        <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <aside th:replace="layout/plantilla :: aside" />
+        <div class="contenido">
+            <h2>Datos de la Canción</h2>
+            <a th:href="@{/cancion/listado}">
+            <button class="yellow">[[#{accion.regresar}]]</button></a>
+            <br>
+            <br>
+            <form th:action="@{/cancion/guardar}"
+                  method="POST"
+                  th:object="${cancion}">
+              <input type="hidden" name="idCancion" th:field="*{idCancion}"/>
+              <input type="hidden" name="idGenero" th:field="*{genero.idGenero}"/>
+              <input type="hidden" name="idCantante" th:field="*{cantante.idCantante}"/>
+                     
+                     <label for="nombrecancion">Cancion</label>
+                <input type="text" name="nombrecancion" th:field="*{nombrecancion}" 
+                  
+                       <label for="duracion">Duracion</label>
+                <input type="text" name="duracion" th:field="*{duracion}" 
+                       
+                       <label for="nombregenero">Genero</label>
+                <input type="text" name="genero" th:field="*{genero.nombregenero}" 
+                       
+                       <label for="nombrecantante">Cantante</label>
+                <input type="text" name="nombrecantante" th:field="*{cantante.nombrecantante}"         
+                <br>
+                <button class="green">[[#{accion.guardar}]]</button>
+            </form>
+        </div>
+    </body>
+    <footer th:replace="layout/plantilla :: footer" />
+</html>

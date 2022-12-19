@@ -10,6 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinColumns;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -26,33 +28,33 @@ public class Cancion {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_canciones")
+    @Column(name="id_cancion")
     private Long idCancion;
-    private Long idGenero;
-    private Long idCantante;
-    private String nombrecancion;
-    private String duracion;
+    String nombrecancion;
+    String duracion;
     
      /*Cancion trae a Genero y cantante*/
+    
+    
+    @JoinColumn(name="id_cantante", referencedColumnName="id_cantante")
+    @ManyToOne
+    private Cantante cantante;
+            
+   
     @JoinColumn(name="id_genero", referencedColumnName="id_genero")
     @ManyToOne
     private Genero genero;
 
-    @JoinColumn(name="id_cantante", referencedColumnName="id_cantante")
-    @ManyToOne
-    private Cantante cantante;
     
     public Cancion() {
 }
-
-    public Cancion(Long idCancion, Long idGenero, Long idCantante, String nombrecancion, String duracion, Genero genero, Cantante cantante) {
-        this.idCancion = idCancion;
-        this.idGenero = idGenero;
-        this.idCantante = idCantante;
+    
+    public Cancion(String nombrecancion, String duracion, Genero genero, Cantante cantante) {
+    
         this.nombrecancion = nombrecancion;
         this.duracion = duracion;
-        this.genero = genero;
-        this.cantante = cantante;
+       this.genero = genero;
+      this.cantante = cantante;
     }
 
   

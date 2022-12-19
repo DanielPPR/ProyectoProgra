@@ -28,6 +28,9 @@ public class CancionServiceImpl implements CancionService{
     @Autowired
     private GeneroDao generoDao;
     
+      @Autowired
+    private CantanteDao cantanteDao;
+    
     @Override
     @Transactional(readOnly = true)
     public List<Cancion> getCanciones() {
@@ -43,9 +46,15 @@ public class CancionServiceImpl implements CancionService{
     @Override
     @Transactional
     public void save(Cancion cancion) {
+      
     Genero genero = cancion.getGenero();
     genero = generoDao.save(genero);
     cancion.setGenero(genero);
+    
+    Cantante cantante = cancion.getCantante();
+    cantante = cantanteDao.save(cantante);
+    cancion.setCantante(cantante);
+    
     cancionDao.save(cancion);
     }
 

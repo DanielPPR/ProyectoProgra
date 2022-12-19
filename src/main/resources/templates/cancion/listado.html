@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+       <title>Style Music</title>
+        <meta charset="UTF-8">
+        <link th:href="@{/css/menu.css}" rel="stylesheet" type="text/css"/>
+    </head>
+ 
+    </head>
+
+    <body>
+        <aside th:replace="layout/plantilla :: aside" />
+       
+        <div class="contenido">            
+            <h2>[[#{cantante.titulo}]]</h2>            
+            <a th:href="@{/cancion/nuevo}">
+                <button class="green">Nueva Cancion</button>
+            </a>      
+            <div th:if="${canciones != null and !canciones.empty}">            
+                <table 
+                    border="2">                  
+                    <thead>                       
+                        <tr>                         
+                            <th scope="col">Cancion</th>                 
+                            <th scope="col">Duracion</th>                 
+                            <th scope="col">Genero</th>                    
+                            <th scope="col">Cantante</th>                  
+                        </tr>                  
+                    </thead>        
+                    <tbody>               
+                        <tr th:each="item : ${canciones}">          
+                            <td th:text="${item.nombrecancion}">    
+                            <td th:text="${item.duracion}">    
+                            <td th:text="${item.genero.nombregenero}">    
+                            <td th:text="${item.cantante.nombrecantante}">    
+                            </td>      
+                            <td>
+                                <a th:href="@{/modificarCancion/} + ${item.idCancion}">
+                                    <button class="blue">[[#{accion.modificar}]]</button>
+                                </a>
+                            </td>                          
+                            <td>
+                                <a th:href="@{/eliminarCancion/} + ${item.idCancion}">
+                                    <button class="red">[[#{accion.eliminar}]]</button>
+                                </a>
+                            </td>          
+                        </tr>            
+                    </tbody>        
+                </table>         
+            </div>
+            <div th:if="${canciones == null or canciones.empty}"> 
+                La lista de artistas está vacía
+            </div>    
+        </div>  
+        
+    </body>
+    <footer th:replace="layout/plantilla :: footer" />
+</html>
