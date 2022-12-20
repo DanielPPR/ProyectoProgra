@@ -35,9 +35,14 @@ public class PerfilController {
         return "/perfil/modificarPerfil";
     }
     
-     @PostMapping("/perfil/guardar")
+    @PostMapping("/perfil/guardar")
     public String guardarPerfil (Perfil perfil){
     perfilService.save(perfil);
+    return "redirect:/perfil/cliente";
+    }
+    @PostMapping("/perfil/guardarNombre")
+    public String guardarPerfilNombre (Perfil perfil){
+    perfilService.saveNombre(perfil);
     return "redirect:/perfil/cliente";
     }
     

@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -26,21 +28,26 @@ public class Playlist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_playlist")
     private Long idPlaylist;
-    private Long idCliente;
-    private Long idCancion;
-    private String nombreplaylist;
-    private boolean publicoprivado;
+    String nombreplaylist;
+    boolean publicoprivado;
     
-    
+   
+            
+   
+    @JoinColumn(name="id_cancion", referencedColumnName="id_cancion")
+    @ManyToOne
+    private Cancion cancion;
+
      public Playlist() {
     }
 
-    public Playlist( Long idCliente, Long idCancion, String nombreplaylist, boolean publicoprivado) {
-        
-        this.idCliente = idCliente;
-        this.idCancion = idCancion;
+    public Playlist(String nombreplaylist, boolean publicoprivado, Perfil perfil, Cancion cancion) {
+       
         this.nombreplaylist = nombreplaylist;
         this.publicoprivado = publicoprivado;
+        this.cancion = cancion;
     }
+
+    
 
 }

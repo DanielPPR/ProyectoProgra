@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import lombok.Data;
@@ -28,30 +30,34 @@ public class Perfil implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_cliente")
     private Long idCliente;
-    private Long idPlaylist;
-    private String nombre;
-    private String apellido;
-    private int celular;
-    private int identificacion;
-    private String usercliente;
-    private String passwordcliente;
+   /* private Long idPlaylist;*/
+     String nombre;
+     String apellido;
+     int celular;
+     int identificacion;
+     String usercliente;
+     String passwordcliente;
+     
+     
+      @JoinColumn(name="id_playlist", referencedColumnName="id_playlist")
+    @ManyToOne
+    private Playlist playlist;
+      
+      
     
     public Perfil() {
     }
 
-    public Perfil( Long idPlaylist, String nombre, String apellido, int celular, int identificacion, String usercliente, String passwordcliente) {
-      
-        this.idPlaylist = idPlaylist;
+    public Perfil(Long idCliente, String nombre, String apellido, int celular, int identificacion, String usercliente, String passwordcliente, Playlist playlist) {
+        this.idCliente = idCliente;
         this.nombre = nombre;
         this.apellido = apellido;
         this.celular = celular;
         this.identificacion = identificacion;
         this.usercliente = usercliente;
         this.passwordcliente = passwordcliente;
+        this.playlist = playlist;
     }
 
-   
-    
- 
 }
 

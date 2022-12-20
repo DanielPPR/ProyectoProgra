@@ -4,7 +4,11 @@
  */
 package com.ProyectoProgra.service;
 
+import com.ProyectoProgra.Dao.CancionDao;
+import com.ProyectoProgra.Dao.PerfilDao;
 import com.ProyectoProgra.Dao.PlaylistDao;
+import com.ProyectoProgra.domain.Cancion;
+import com.ProyectoProgra.domain.Perfil;
 import com.ProyectoProgra.domain.Playlist;
 import com.ProyectoProgra.domain.Playlist;
 import java.util.List;
@@ -21,6 +25,10 @@ public class PlaylistServiceImpl implements PlaylistService {
 
          @Autowired
     private PlaylistDao playlistDao;
+         @Autowired
+    private PerfilDao perfilDao;
+         @Autowired
+    private CancionDao cancionDao;
      
      @Override
     @Transactional(readOnly = true)
@@ -37,6 +45,11 @@ return (List<Playlist>) playlistDao.findAll();
     @Override
     @Transactional
     public void save(Playlist playlist) {
+        
+    Cancion cancion = playlist.getCancion();
+    cancion = cancionDao.save(cancion);
+    playlist.setCancion(cancion);
+        
 playlistDao.save(playlist);
     }
 

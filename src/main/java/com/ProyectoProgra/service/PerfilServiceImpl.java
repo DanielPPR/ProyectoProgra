@@ -5,7 +5,9 @@
 package com.ProyectoProgra.service;
 
 import com.ProyectoProgra.Dao.PerfilDao;
+import com.ProyectoProgra.Dao.PlaylistDao;
 import com.ProyectoProgra.domain.Perfil;
+import com.ProyectoProgra.domain.Playlist;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,9 @@ public class PerfilServiceImpl implements PerfilService {
 
      @Autowired
     private PerfilDao perfilDao;
+     
+     @Autowired
+     private PlaylistDao playlistDao;
      
      @Override
     @Transactional(readOnly = true)
@@ -36,7 +41,18 @@ return (List<Perfil>) perfilDao.findAll();
     @Override
     @Transactional
     public void save(Perfil perfil) {
-perfilDao.save(perfil);
+        
+    Playlist playlist = perfil.getPlaylist();
+    playlist = playlistDao.save(playlist);
+    perfil.setPlaylist(playlist);
+        
+    perfilDao.save(perfil);
+    }
+    
+    @Override
+    @Transactional
+    public void saveNombre(Perfil perfil) {
+     perfilDao.save(perfil);
     }
 
     @Override

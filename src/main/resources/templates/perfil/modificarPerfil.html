@@ -14,12 +14,14 @@
             <button class="yellow">[[#{accion.regresar}]]</button></a>
             <br>
             <br>
-            <form th:action="@{/perfil/guardar}"
+            <form th:action="@{/perfil/guardarNombre}"
                   method="POST"
                   th:object="${perfil}">
               <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
+              <input type="hidden" name="idPlaylist" th:field="*{playlist.idPlaylist}"/>
                 <label for="nombre">[[#{genero.nombre}]] </label>
                 <input type="text" name="nombre" th:field="*{nombre}" />
+                <input type="text" name="nombreplaylist" th:field="*{playlist.nombreplaylist}" />
                 <br>
                 <button class="green">[[#{accion.guardar}]]</button>
             </form>
